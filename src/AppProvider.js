@@ -5,13 +5,7 @@ import { GlobalStyles, theme } from "./styles";
 export const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [themeMode, setThemeMode] = useState(
-    localStorage.getItem("theme") || "lightTheme"
-  );
-
-  useEffect(() => {
-    localStorage.setItem("theme", themeMode);
-  }, [themeMode]);
+  const [themeMode, setThemeMode] = useState("lightTheme");
 
   const toggleTheme = () => {
     setThemeMode((prevState) => {
@@ -23,7 +17,7 @@ const AppProvider = ({ children }) => {
     });
   };
 
-  const value = { themeMode, toggleTheme };
+  const value = { themeMode };
   const costumTheme = theme[themeMode];
 
   return (
